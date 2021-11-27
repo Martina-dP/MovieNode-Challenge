@@ -1,5 +1,6 @@
 const { Schema } = require('mongoose');
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate-v2');
 
 const moviesSchema = new Schema({
     
@@ -13,5 +14,7 @@ const moviesSchema = new Schema({
     ratings: { type: Number, min: 0, max: 10 }
 
 });
+
+moviesSchema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Pelicula', moviesSchema);

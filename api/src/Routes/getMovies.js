@@ -6,8 +6,10 @@ const router = Router();
 
 router.get("/", async function( req, res) {
     
+    const limit = req.query.limit || 5;
+    const page = req.query.page || 1;
     //traigo todas las peliculas de la base de datos
-    const lista = await Pelicula.find();
+    const lista = await Pelicula.paginate({}, {limit, page});
       res.json(lista);
 
 });
